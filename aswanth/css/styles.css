@@ -1,0 +1,566 @@
+:root {
+    --primary: #4cBB17;
+    --secondary: #48872B;
+    --dark: #39542C;
+    --darker: #293325;
+    --text: #e0e0e0;
+    --terminal: #121212;
+    --success: #4cBB17;
+    --warning: #FFC107;
+    --error: #F44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    background-color: #000;
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.terminal {
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 20px rgba(76, 187, 23, 0.3);
+    position: relative;
+    background-color: var(--terminal);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: var(--darker);
+    border-bottom: 1px solid var(--dark);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.close {
+    background-color: var(--error);
+}
+
+.minimize {
+    background-color: var(--warning);
+}
+
+.maximize {
+    background-color: var(--success);
+}
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.terminal-body {
+    padding: 20px;
+    position: relative;
+    min-height: 80vh;
+}
+
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 18, 18, 0) 0%,
+        rgba(76, 187, 23, 0.1) 10%,
+        rgba(18, 18, 18, 0.1) 100%
+    );
+    background-size: 100% 8px;
+    pointer-events: none;
+    animation: scan 8s linear infinite;
+    z-index: 1;
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.hacker-nav {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.hacker-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style-type: none;
+}
+
+.hacker-nav a {
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.hacker-nav a:hover {
+    color: var(--primary);
+}
+
+.hacker-nav .active a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.hacker-nav .active a:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.hero {
+    text-align: center;
+    margin: 40px 0 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.typewriter {
+    display: inline-block;
+}
+
+.typewriter h1 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--primary);
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary); }
+}
+
+.subtitle {
+    color: var(--secondary);
+    font-size: 1.1rem;
+}
+
+.prompt {
+    color: var(--primary);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.command-line {
+    background-color: rgba(41, 51, 37, 0.5);
+    border-left: 3px solid var(--primary);
+    padding: 15px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.command-line .output {
+    margin-top: 10px;
+}
+
+.skills {
+    margin: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.skills h2 {
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.skill-category {
+    background-color: rgba(41, 51, 37, 0.3);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--dark);
+}
+
+.skill-category h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-category ul {
+    list-style-type: none;
+}
+
+.skill-category li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.skill-category li:before {
+    content: ">";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.terminal-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--dark);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--secondary);
+    position: relative;
+    z-index: 2;
+}
+
+/* Projects Page Styles */
+.projects {
+    position: relative;
+    z-index: 2;
+}
+
+.project-card {
+    background-color: rgba(41, 51, 37, 0.3);
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(76, 187, 23, 0.2);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-header h3 {
+    color: var(--primary);
+}
+
+.project-date {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.project-tech span {
+    background-color: var(--darker);
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Certifications Page Styles */
+.certifications {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 100%;
+    width: 2px;
+    background: var(--dark);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.timeline-date {
+    width: 100px;
+    text-align: right;
+    padding-right: 20px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.timeline-content {
+    padding-left: 30px;
+    flex: 1;
+    position: relative;
+}
+
+.timeline-content h3 {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--darker);
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.workshop-list {
+    list-style-type: none;
+    margin-top: 40px;
+}
+
+.workshop-list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.workshop-list li:before {
+    content: "■";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+/* Contact Page Styles */
+.contact {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.contact-card {
+    background-color: rgba(41, 51, 37, 0.3);
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.contact-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background-color: var(--darker);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+    border: 1px solid var(--primary);
+}
+
+.contact-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background-color: var(--darker);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: var(--primary);
+    color: var(--terminal);
+}
+
+.contact-form {
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--darker);
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submit-btn {
+    background-color: var(--primary);
+    color: var(--terminal);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .terminal {
+        margin: 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .typewriter h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .hacker-nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .timeline:before {
+        left: 30px;
+    }
+    
+    .timeline-date {
+        width: 70px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal-body {
+        padding: 15px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .timeline-content {
+        padding-left: 20px;
+    }
+    
+    .timeline-badge {
+        left: 0;
+        top: -15px;
+    }
+}
